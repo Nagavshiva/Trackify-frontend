@@ -167,29 +167,27 @@ const TimeEntryList: React.FC = () => {
 
   return (
     <div className="container mx-auto px-4">
-
       <div className="border p-4 mb-4 rounded shadow flex flex-col sm:flex-row items-start sm:items-center justify-between">
-      <input
-  type="text"
-  placeholder="What are you working on?"
-  className="
-    flex-grow
-    px-3 py-2 
-    sm:px-4 sm:py-3 
-    md:px-5 md:py-3.5
-    lg:px-6 lg:py-4
-    text-sm sm:text-base md:text-lg lg:text-xl
-    border 
-    rounded 
-    mb-2 sm:mb-0
-    w-full sm:w-auto
-    focus:outline-none focus:ring-2 focus:ring-blue-500
-  "
-/>
-
+        <input
+          type="text"
+          placeholder="What are you working on?"
+          className="
+            flex-grow
+            px-3 py-2 
+            sm:px-4 sm:py-3 
+            md:px-5 md:py-3.5
+            lg:px-6 lg:py-4
+            text-sm sm:text-base md:text-lg lg:text-xl
+            border 
+            rounded 
+            mb-2 sm:mb-0
+            w-full sm:w-auto
+            focus:outline-none focus:ring-2 focus:ring-blue-500
+          "
+        />
         <div className="flex flex-col sm:flex-row items-start sm:items-center sm:ml-4 w-full sm:w-auto">
           <button
-            className="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 flex items-center justify-center w-full sm:w-auto mb-2 sm:mb-0 sm:mr-2 sm:px-3 lg:px-4"
+            className="px-3 py-2 sm:px-4 sm:py-2 md:px-5 lg:px-6 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 flex items-center justify-center w-full sm:w-auto mb-2 sm:mb-0 sm:mr-2"
             onClick={() => setIsModalOpen(true)}
           >
             <FaPlus className="inline mr-2 md:mr-0" />
@@ -199,7 +197,7 @@ const TimeEntryList: React.FC = () => {
           {!isRunning ? (
             <button
               onClick={() => handleStart()}
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 flex items-center justify-center w-full sm:w-auto sm:px-3 lg:px-4"
+              className="px-3 py-2 sm:px-4 sm:py-2 md:px-5 lg:px-6 bg-blue-500 text-white rounded hover:bg-blue-700 flex items-center justify-center w-full sm:w-auto"
             >
               <FaPlay className="inline mr-2 md:mr-0" />
               <span className="md:text-center">Start</span>
@@ -207,19 +205,18 @@ const TimeEntryList: React.FC = () => {
           ) : (
             <button
               onClick={() => handleStop(timeEntries.find(entry => entry.isRunning)!.id)}
-              className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700 flex items-center justify-center w-full sm:w-auto sm:px-3 lg:px-4"
+              className="px-3 py-2 sm:px-4 sm:py-2 md:px-5 lg:px-6 bg-red-500 text-white rounded hover:bg-red-700 flex items-center justify-center w-full sm:w-auto"
             >
               <FaStop className="inline mr-2 md:mr-0" />
               <span className="md:text-center">Stop</span>
             </button>
           )}
         </div>
-
       </div>
 
       {timeEntries.some(entry => !entry.isRunning) && (
         <div className="bg-white shadow rounded p-4 overflow-x-auto">
-          <table className="min-w-full bg-white text-sm sm:text-base lg:text-lg">
+          <table className="min-w-full bg-white text-xs sm:text-sm md:text-base lg:text-lg">
             <thead>
               <tr className="w-full bg-gray-100 text-left">
                 <th className="p-2 sm:p-4 border-b border-gray-300">Project</th>
@@ -232,7 +229,7 @@ const TimeEntryList: React.FC = () => {
             <tbody>
               {timeEntries.map((entry) => (
                 <tr key={entry.id} className="border-b">
-                  <td className="p-2 sm:p-4 flex items-center text-xs sm:text-sm lg:text-base">
+                  <td className="p-2 sm:p-4 flex items-center text-xs sm:text-sm md:text-base lg:text-lg">
                     {entry.projectName}
                     {entry.count > 0 && (
                       <button
@@ -243,9 +240,9 @@ const TimeEntryList: React.FC = () => {
                       </button>
                     )}
                   </td>
-                  <td className="p-2 sm:p-4 text-xs sm:text-sm lg:text-base">{entry.startTime}</td>
-                  <td className="p-2 sm:p-4 text-xs sm:text-sm lg:text-base">{entry.endTime || 'N/A'}</td>
-                  <td className="p-2 sm:p-4 text-xs sm:text-sm lg:text-base">{entry.duration}</td>
+                  <td className="p-2 sm:p-4 text-xs sm:text-sm md:text-base lg:text-lg">{entry.startTime}</td>
+                  <td className="p-2 sm:p-4 text-xs sm:text-sm md:text-base lg:text-lg">{entry.endTime || 'N/A'}</td>
+                  <td className="p-2 sm:p-4 text-xs sm:text-sm md:text-base lg:text-lg">{entry.duration}</td>
                   <td className="p-2 sm:p-4 text-center flex items-center justify-center">
                     {entry.isRunning ? (
                       <button
@@ -301,3 +298,4 @@ const TimeEntryList: React.FC = () => {
 };
 
 export default TimeEntryList;
+
